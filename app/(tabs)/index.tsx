@@ -1,7 +1,7 @@
 import { HeaderHero } from '@/components/HeaderHero';
 
 import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { Text, useWindowDimensions } from 'react-native';
+import { useWindowDimensions } from 'react-native';
 
 export default function HomeScreen() {
   const { width, height } = useWindowDimensions();
@@ -18,7 +18,7 @@ export default function HomeScreen() {
       }
     >
       {/* ОСНОВНИЙ КОНТЕНТ СТОРІНКИ */}
-      <Text>Тут починається звичайний scroll-контент</Text>
+      {/* <Text>Тут починається звичайний scroll-контент</Text> */}
 
       {/* <ThemedView style={styles.titleContainer}> */}
         {/* <ThemedText type="title">Welcome!</ThemedText>
