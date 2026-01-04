@@ -1,29 +1,32 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { HeaderHero } from '@/components/HeaderHero';
 
-import { HelloWave } from '@/components/hello-wave';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { Text, useWindowDimensions } from 'react-native';
 
 export default function HomeScreen() {
+  const { width, height } = useWindowDimensions();
+  const isLandscape = width > height;
+
   return (
     <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
+      headerBackgroundColor={{ light: '#d7b8b8ff', dark: '#1D3D47' }}
       headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+        <HeaderHero
+          isLandscape={isLandscape}
+          screenHeight={height}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+      }
+    >
+      {/* ОСНОВНИЙ КОНТЕНТ СТОРІНКИ */}
+      <Text>Тут починається звичайний scroll-контент</Text>
+
+      {/* <ThemedView style={styles.titleContainer}> */}
+        {/* <ThemedText type="title">Welcome!</ThemedText>
         <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
+      </ThemedView> */}
+      {/* <ThemedView style={styles.stepContainer}> */}
+        {/* <ThemedText type="subtitle">Step 1: Try it</ThemedText> */}
+        {/* <ThemedText>
           Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
           Press{' '}
           <ThemedText type="defaultSemiBold">
@@ -35,9 +38,9 @@ export default function HomeScreen() {
           </ThemedText>{' '}
           to open developer tools.
         </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
+      </ThemedView> */}
+      {/* <ThemedView style={styles.stepContainer}> */}
+        {/* <Link href="/modal">
           <Link.Trigger>
             <ThemedText type="subtitle">Step 2: Explore</ThemedText>
           </Link.Trigger>
@@ -58,41 +61,252 @@ export default function HomeScreen() {
               />
             </Link.Menu>
           </Link.Menu>
-        </Link>
+        </Link> */}
 
-        <ThemedText>
+        {/* <ThemedText>
           {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
+        </ThemedText> */}
+      {/* </ThemedView> */}
+      {/* <ThemedView style={styles.stepContainer}> */}
+        {/* <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText> */}
+        {/* <ThemedText>
           {`When you're ready, run `}
           <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
           <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
           <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
+        </ThemedText> */}
+      {/* </ThemedView> */}
+      
     </ParallaxScrollView>
   );
 }
 
-const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
-  },
-});
+
+
+
+    
+    // const headerImage={ 
+        
+    //     <View>
+    //       <><Image
+    //     source={require('@/assets/images/synevir.jpg')}
+    //     style={styles.reactBgd} /><View style={styles.reactLogoBox}>
+    //       <Image
+    //         source={require('@/assets/images/burger-menu-67.png')}
+    //         style={styles.reactMenu} />
+    //       <Image
+    //         source={require('@/assets/svg/logo.svg')}
+    //         style={styles.reactLogo} />
+    //     </View><Pressable style={styles.reactBoxAcount}>
+    //       <Text style={styles.reactAcount}>Вхід</Text>
+    //     </Pressable></>
+    //     </View>  
+
+    //   }>
+
+    //   <><Text style={styles.reactTitle}>{"Вітаємо вас на \«МАНДРУЙ\»"}</Text><Pressable style={styles.reactContMore}>
+    //       <Text style={styles.reactTxtMore}>
+    //         Дізнатися більше...
+    //       </Text>
+    //     </Pressable><Pressable style={styles.reactContSearch}>
+    //         <Text style={styles.reactTxtSearch}>
+    //           Розпочати пошук
+    //         </Text>
+    //       </Pressable><Pressable style={styles.reactTags}>
+    //         <Image
+    //           source={require('@/assets/svg/Group14.svg')}
+    //           style={styles.reactTag} />
+    //         <Image
+    //           source={require('@/assets/svg/Group15.svg')}
+    //           style={styles.reactTag} />
+    //         <Image
+    //           source={require('@/assets/svg/Group16.svg')}
+    //           style={styles.reactTag} />
+    //       </Pressable></> */}
+  
+      
+
+
+
+
+// const styles = StyleSheet.create({
+// screen: {
+//   flex: 1,
+//    backgroundColor: "#A1CEDC"
+//   },
+
+//   titleContainer: {
+//     flexDirection: 'row',
+//     alignItems: 'center',
+//     gap: 8,
+//   },
+//   stepContainer: {
+//     gap: 8,
+//     marginBottom: 8,
+//   },
+
+// portraitBg: {
+//   width: '100%',
+//   height: 250,
+// },
+
+//   reactBgd: {
+//     height: 250,
+//     width: 420,
+//     left: 0,
+//     position: 'relative',
+//     ...Platform.select ({
+//       ios: {
+//         top: 32
+//       },
+//       android: {
+//         top: 38
+//       }
+//   })
+// },
+
+//   reactLogoBox: {
+//     flexDirection: "row",
+//     gap: 20,
+//     alignItems: "center",
+//     top: 100,
+//     position: 'absolute',
+//     ...Platform.select ({
+//       ios: {
+//         left: 15
+//       },
+//       android: {
+//         left: 30
+//       }
+//     })
+//   },
+
+//  reactLogo: {
+//     height: 70,
+//     width: 300,
+//   },
+
+//   reactTitle: {
+//     fontFamily: "Ukrainian-Bold",
+//     textAlign: "center",
+//     ...Platform.select ({
+//       ios: {
+//         fontSize: 38,
+//       },
+//       android: {
+//         fontSize: 45,
+//       }
+//   }),
+//   },
+
+//   reactMenu: {
+//     height: 50,
+//     width: 50,
+//   },
+
+//   reactContMore: {
+//     marginTop: 50,
+//     borderWidth: 2,
+//     borderColor: "#d3d3d3",
+    
+//     height: 52,
+//     borderRadius: 26
+//   },
+//   reactTxtMore: {
+//     fontFamily: "Ukrainian-Regular",
+//     textAlign: "center",
+//     fontSize: 25,
+//     ...Platform.select ({
+//       ios: {
+//         paddingTop: 6,
+//       },
+//       android: {
+//         paddingTop: 7,
+//       }
+//   }),
+//   },
+
+//   reactContSearch: {
+//     marginTop: 30,
+//     backgroundColor: "#9370db",
+//     height: 52,
+//     borderRadius: 26
+//   },
+  
+//   reactTxtSearch: {
+//     fontFamily: "Ukrainian-Bold",
+//     fontSize: 28,
+//     color: "#fff",
+//     textAlign: "center",
+//     ...Platform.select ({
+//       ios: {
+//         paddingTop: 7,
+//       },
+//       android: {
+//         paddingTop: 6,
+//       }
+//   }),
+//   },
+
+//   reactBoxAcount: {
+//     position: 'absolute',
+//     top: 50,
+//     right: 14,
+//   },
+//   reactAcount: {
+//     fontFamily: "Ukrainian-Regular",
+//     color: "#fff",
+//     fontSize: 20,
+//     fontWeight: "bold",
+//   },
+
+//   reactTags: {
+//     flexDirection: "row",
+//     alignItems: "center",
+//     justifyContent: "space-around",
+//     marginTop: 30
+//   },
+//   reactTag: {
+//     width: 50,
+//     height: 50,
+
+//   },
+
+//   hero: {
+//   width: '100%',
+//   justifyContent: 'flex-end',
+// },
+
+// heroOverlay: {
+//   padding: 32,
+//   backgroundColor: 'rgba(0,0,0,0.35)',
+// },
+
+// heroLogo: {
+//   width: 220,
+//   height: 50,
+//   marginBottom: 20,
+// },
+
+// heroTitle: {
+//   fontFamily: 'Ukrainian-Bold',
+//   fontSize: 36,
+//   color: '#fff',
+//   marginBottom: 20,
+// },
+
+// heroButton: {
+//   backgroundColor: '#9370db',
+//   paddingVertical: 14,
+//   borderRadius: 28,
+// },
+
+// heroButtonText: {
+//   color: '#fff',
+//   fontSize: 22,
+//   textAlign: 'center',
+// },
+
+// });
+
