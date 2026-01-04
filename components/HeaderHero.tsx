@@ -1,4 +1,4 @@
-import { Image, ImageBackground, View } from 'react-native';
+import { Image, ImageBackground } from 'react-native';
 import { HeaderContent } from './HeaderContent';
 
 export function HeaderHero({
@@ -12,7 +12,8 @@ export function HeaderHero({
     return (
       <ImageBackground
         source={require('@/assets/images/synevir.jpg')}
-        style={{ height: screenHeight, width: '100%' }}
+        style={{ height: screenHeight, 
+                width: '100%'}}
         resizeMode="cover"
       >
         <HeaderContent overlay />
@@ -20,14 +21,13 @@ export function HeaderHero({
     );
   }
 
-  return (
-    <View>
+    return (
+    
       <Image
         source={require('@/assets/images/synevir.jpg')}
-        style={{ height: 260, width: '100%' }}
+        style={{ height: 250, 
+                width: '100%'}}
         resizeMode="cover"
       />
-      <HeaderContent />
-    </View>
   );
 }
