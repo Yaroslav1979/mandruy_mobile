@@ -13,7 +13,8 @@ export function HeaderContent({ overlay = false }: { overlay?: boolean }) {
         source={require('@/assets/svg/logo.svg')}
         style={styles.logo}
       />
-      <Pressable style={styles.reactBoxAcount}>
+      <Pressable 
+      style={styles.reactBoxAcount}>
         <Text style={styles.reactAcount}>Вхід</Text>
        </Pressable>
       
@@ -36,12 +37,10 @@ export function HeaderContent({ overlay = false }: { overlay?: boolean }) {
 
 const styles = StyleSheet.create({
   container: {
-    // padding: 20,
     alignItems: 'center',
   },
   overlay: {
     position: 'absolute',
-    // bottom: 40,
     left: 0,
     right: 0,
   },
