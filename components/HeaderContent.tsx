@@ -52,9 +52,6 @@ export function HeaderContent({ overlay = false }: { overlay?: boolean }) {
           <Text style={styles.linkText}>Дізнатися більше</Text>
         </Pressable>
       </View>
-
-     
-
     </View>
   );
 }

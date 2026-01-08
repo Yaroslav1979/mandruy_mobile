@@ -57,6 +57,7 @@ export default function HomeScreen() {
             />
             </Pressable>
           </View>
+          
         </View>
         </ImageBackground>
       )}
