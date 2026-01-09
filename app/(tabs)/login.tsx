@@ -1,5 +1,11 @@
 import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { StyleSheet, Text, TextInput, View } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 export default function LoginScreen() {
   return (
@@ -16,13 +22,16 @@ export default function LoginScreen() {
       <View style={styles.form}>
 
         <View style={styles.formBlock}>
-         <Text style={styles.label}>Електронна пошта / Email</Text>
+         <Text style={styles.label}>Електронна пошта / Email:</Text>
          <TextInput style={styles.input} textAlign='center' />
         </View>
         <View style={styles.formBlock}>
-          <Text style={styles.label}>Пароль / Password</Text>
-         <TextInput style={styles.input} textAlign='center' />
+          <Text style={styles.label}>Пароль / Password:</Text>
+         <TextInput style={styles.input} textAlign='center' secureTextEntry={true}/>
         </View>
+        <TouchableOpacity style={styles.btn} >
+          <Text style={styles.btnTxt}> Вхід </Text> 
+        </TouchableOpacity>
 
       </View>
 
@@ -66,5 +75,18 @@ const styles = StyleSheet.create({
       fontSize: 20,
       fontFamily: 'Ukrainian-Regular',
       color: "#111",
+    },
+    btn: {
+      backgroundColor: '#9370db99',
+      borderWidth: 2,
+      height: 60,
+      borderRadius: 30,
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    btnTxt: {
+      fontFamily: 'Ukrainian-Regular',
+      color: "#eee",
+      fontSize: 20
     }
 })

@@ -71,17 +71,7 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
   },
-  // wrapper: {
-  //   marginTop: -54,
-  //   paddingLeft: 100,
-  //   paddingRight: 100,
-  //   backgroundColor: "#000",
-  // }, 
-  // logo: {
-  //   width: 220,
-  //   height: 60,
-  //   backgroundColor: "#000",
-  // },
+   
   title: {
     fontFamily: 'Ukrainian-Bold',
     fontSize: 38,
