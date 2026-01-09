@@ -18,10 +18,31 @@ export function HeaderContent({ overlay = false }: { overlay?: boolean }) {
         <Text style={styles.reactAcount}>Вхід</Text>
        </Pressable>
       
-</View>
+    </View>
       <Text style={[styles.title, overlay && styles.overlayText]}>
         Вітаємо вас на «МАНДРУЙ»
       </Text>
+
+     <View style={styles.wrapperIcons}> 
+          <Pressable>
+            <Image
+            source={require('../assets/svg/Group14.svg')}
+            style={styles.icon}
+          />
+          </Pressable>
+          <Pressable>
+            <Image
+            source={require('../assets/svg/Group15.svg')}
+            style={styles.icon}
+          />
+           </Pressable>
+          <Pressable>
+            <Image
+            source={require('../assets/svg/Group16.svg')}
+            style={styles.icon}
+          />
+          </Pressable>
+      </View>
 
       <View style={styles.buttons}>
         <Pressable style={styles.button}>
@@ -65,7 +86,7 @@ const styles = StyleSheet.create({
   
   reactAcount: {
     fontFamily: "Ukrainian-Regular",
-    color: "#fff",
+    color: "#eee",
     fontSize: 20,
     fontWeight: "bold",
   },
@@ -80,10 +101,10 @@ const styles = StyleSheet.create({
     fontFamily: 'Ukrainian-Bold',
     fontSize: 30,
     textAlign: 'center',
-    marginBottom: 80,
+    marginBottom: 30,
   },
   overlayText: {
-    color: '#fff',
+    color: '#eee',
   },
   buttons: {
     display: "flex",
@@ -91,14 +112,14 @@ const styles = StyleSheet.create({
     gap: 40,
   },
   button: {
-    backgroundColor: '#9370db',
+    backgroundColor: '#9370db70',
     paddingHorizontal: 30,
     paddingVertical: 14,
     borderRadius: 30,
   },
   buttonText: {
     fontFamily: 'Ukrainian-Bold',
-    color: '#fff',
+    color: '#eee',
     fontSize: 20,
   },
   link: {
@@ -108,8 +129,18 @@ const styles = StyleSheet.create({
   },
   linkText: {
     fontFamily: 'Ukrainian-Bold',
-    color: '#fff',
+    color: '#eee',
     fontSize: 20,
+  },
+ wrapperIcons: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 100,
+    marginBottom: 30,
+    // marginTop: 50
+  },
+  icon: {
+    width: 60,
+    height: 60,
   }
-
 });

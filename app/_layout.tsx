@@ -1,12 +1,11 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react'; 
-import * as Font from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import 'react-native-reanimated';
 import { useColorScheme } from '@/hooks/use-color-scheme';
-// import { Dimensions } from 'react-native';
+import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
+import * as Font from 'expo-font';
+import { Stack } from 'expo-router';
+import * as SplashScreen from 'expo-splash-screen';
+import { StatusBar } from 'expo-status-bar';
+import { useEffect } from 'react';
+import 'react-native-reanimated';
 
 // Утримуємо сплеш-скрін до завантаження
 SplashScreen.preventAutoHideAsync();
@@ -25,9 +24,6 @@ export default function RootLayout() {
     'Ukrainian-Bold': require('../assets/fonts/e-Ukraine-Bold.otf'), 
   });
 
-  // const [ dimensions, setDimension ] = useState(
-  //   Dimensions.get("window").width
-  // );
 
   // Використовуємо useEffect для підвантаження шрифтів
   useEffect(() => {
@@ -40,18 +36,6 @@ export default function RootLayout() {
   if (!fontsLoaded && !fontError) {
     return null;
   };
-
-  // useEffect(() => {
-  //   const onChange = () => {
-  //     const width = Dimensions.get("window").width;
-  //     console.log("width", width);
-  //     setDimension(width);
-  //   };
-  //     Dimensions.addEventListener("change", onChange);
-  //     return () => {
-  //       Dimensions.removeEventListener("change", onChange);
-  //     };
-  //   },[] );
 
 
   return (

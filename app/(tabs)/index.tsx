@@ -1,6 +1,6 @@
 import { HeaderHero } from '@/components/HeaderHero';
-
 import ParallaxScrollView from '@/components/parallax-scroll-view';
+import { Image } from 'expo-image';
 import { ImageBackground, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 
 export default function HomeScreen() {
@@ -24,14 +24,6 @@ export default function HomeScreen() {
         style={{width: "100%", height: 600}}
         >
         <View style={styles.container}>
-          {/* <View style={styles.wrapper}> */}
-
-            {/* <Image
-              source={require('@/assets/svg/logo.svg')}
-              style={styles.logo}
-            /> */}
-
-          {/* </View> */}
 
           <Text style={styles.title}>Вітаємо вас на «МАНДРУЙ»</Text>
           
@@ -42,7 +34,30 @@ export default function HomeScreen() {
             <Pressable style={styles.link}>
               <Text style={styles.linkText}>Дізнатися більше</Text>
             </Pressable>
+
           </View>
+
+          <View style={styles.wrapperIcons}> 
+            <Pressable>
+              <Image
+              source={require('../../assets/svg/Group14.svg')}
+              style={styles.icon}
+            />
+            </Pressable>
+            <Pressable>
+              <Image
+              source={require('../../assets/svg/Group15.svg')}
+              style={styles.icon}
+            />
+            </Pressable>
+            <Pressable>
+              <Image
+              source={require('../../assets/svg/Group16.svg')}
+              style={styles.icon}
+            />
+            </Pressable>
+          </View>
+          
         </View>
         </ImageBackground>
       )}
@@ -56,26 +71,17 @@ const styles = StyleSheet.create({
     padding: 20,
     alignItems: 'center',
   },
-  wrapper: {
-    marginTop: -54,
-    paddingLeft: 100,
-    paddingRight: 100,
-    backgroundColor: "#000",
-  }, 
-  logo: {
-    width: 220,
-    height: 60,
-    backgroundColor: "#000",
-  },
+   
   title: {
     fontFamily: 'Ukrainian-Bold',
     fontSize: 38,
     textAlign: 'center',
+    color: '#222',
     marginTop: 20,
     marginBottom: 60,
   },
   overlayText: {
-    color: '#fff',
+    color: '#eee',
   },
   buttons: {
     display: "flex",
@@ -83,28 +89,42 @@ const styles = StyleSheet.create({
     gap: 40,
   },
   button: {
-    backgroundColor: '#9370db',
+    backgroundColor: '#9370db99',
+    borderWidth: 2,
+    borderColor: "#00000050",
     paddingHorizontal: 30,
     paddingVertical: 14,
     borderRadius: 30,
   },
   buttonText: {
     fontFamily: 'Ukrainian-Bold',
-    color: '#fff',
+    color: '#eee',
     fontSize: 20,
    
   },
   link: {
     paddingVertical: 14,
     borderWidth: 2,
-    borderColor: "#000",
+    borderColor: "#00000050",
     borderRadius: 30,
-     alignItems: "center"
+     alignItems: "center",
+     backgroundColor: "#a9a9a980",
   },
   linkText: {
     fontFamily: 'Ukrainian-Bold',
-    color: '#000',
+    color: '#222',
     fontSize: 20,
+  },
+
+  wrapperIcons: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 50,
+    marginTop: 50
+  },
+  icon: {
+    width: 60,
+    height: 60,
   }
 });
 

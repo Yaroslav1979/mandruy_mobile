@@ -1,4 +1,5 @@
 import { Image } from 'expo-image';
+import { router } from 'expo-router';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 export function HeaderHatContent({ overlay = false }: { overlay?: boolean }) {
@@ -20,7 +21,9 @@ export function HeaderHatContent({ overlay = false }: { overlay?: boolean }) {
       />
 
       <Pressable 
-      style={styles.reactBoxAcount}>
+      style={styles.reactBoxAcount}
+      onPress={() => router.push('/login')}
+      >
         <Text style={styles.reactAcount}>Вхід</Text>
        </Pressable>
       

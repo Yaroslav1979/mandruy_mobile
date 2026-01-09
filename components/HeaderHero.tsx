@@ -29,6 +29,7 @@ export function HeaderHero({
                 width: '100%'}}
         resizeMode="cover"
       >
+        
       <HeaderHatContent overlay />
 
       </ImageBackground>
