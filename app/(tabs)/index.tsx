@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Ukrainian-Bold',
     color: '#eee',
     fontSize: 20,
-   
   },
   link: {
     paddingVertical: 14,

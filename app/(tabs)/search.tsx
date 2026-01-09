@@ -5,12 +5,9 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  useWindowDimensions
 } from 'react-native';
 
 export default function LoginScreen() {
-  const { width, height } = useWindowDimensions();
-  const isLandscape = width > height;
   return (
     <ParallaxScrollView
           headerBackgroundColor={{ light: '#fff', dark: '#1D3D47' }}
@@ -22,20 +19,16 @@ export default function LoginScreen() {
         <Text style={styles.title}>Login page</Text>
       </View>
 
-      <View style={[styles.form, isLandscape && styles.formLandscape]}>
-        
-        <View style={[styles.formWrapper, isLandscape && styles.formWrapperLandscape]}>
-         <View style={[styles.formBlock, isLandscape && styles.formBlockLandscape]}>
-          <Text style={styles.label}>Електронна пошта / Email:</Text>
-          <TextInput style={styles.input} textAlign='center' />
-         </View>
+      <View style={styles.form}>
 
-          <View style={styles.formBlock}>
-            <Text style={styles.label}>Пароль / Password:</Text>
-           <TextInput style={styles.input} textAlign='center' secureTextEntry={true}/>
-          </View>
+        <View style={styles.formBlock}>
+         <Text style={styles.label}>Електронна пошта / Email:</Text>
+         <TextInput style={styles.input} textAlign='center' />
         </View>
-
+        <View style={styles.formBlock}>
+          <Text style={styles.label}>Пароль / Password:</Text>
+         <TextInput style={styles.input} textAlign='center' secureTextEntry={true}/>
+        </View>
         <TouchableOpacity style={styles.btn} >
           <Text style={styles.btnTxt}> Вхід </Text> 
         </TouchableOpacity>
@@ -64,38 +57,10 @@ const styles = StyleSheet.create({
       marginTop: 100,
       marginHorizontal: 40,
     },
-
-    formLandscape: {
-      fontFamily: 'Ukrainian-Bold',
-      display: "flex",
-      gap: 20,
-      marginTop: 10,
-      marginHorizontal: 100,
-    },
-    formWrapper: {
-      display: "flex",
-      flexDirection: "column",
-      gap: 20,
-    },
-    formWrapperLandscape: {
-      display: "flex",
-      flexDirection: "row",
-      gap: 40,
-    },
-
     formBlock: {
       display: "flex",
-      flex: 1,
-      gap: 10,
+      gap: 10
     },
-
-    formBlockLandscape: {
-      display: "flex",
-      flex: 1,
-      width: 200,
-      gap: 10,
-    },
-
      label: {
       fontFamily: 'Ukrainian-Regular',
       color: "#111",

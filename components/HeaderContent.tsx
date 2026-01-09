@@ -1,24 +1,64 @@
 import { Image } from 'expo-image';
+import { router } from 'expo-router';
+import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 export function HeaderContent({ overlay = false }: { overlay?: boolean }) {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <View style={[styles.container, overlay && styles.overlay]}>
       <View style={styles.box}>
-      <Image
-    source={require('@/assets/images/burger-menu-67.png')}
-    style={styles.reactMenu} />
       
+      <Pressable 
+              style={styles.reactBoxMenu}
+              onPress={() => setMenuOpen(prev => !prev)}
+              >
+              <Image
+                source={require('@/assets/images/burger-menu-67.png')}
+                style={styles.reactMenu} />
+            </Pressable>
       <Image
         source={require('@/assets/svg/logo.svg')}
         style={styles.logo}
       />
       <Pressable 
-      style={styles.reactBoxAcount}>
+      style={styles.reactBoxAcount}
+       onPress={() => router.push('/login')}
+       >
         <Text style={styles.reactAcount}>Вхід</Text>
        </Pressable>
       
     </View>
+      {menuOpen && (
+            <View style={styles.dropdown}>
+              <Pressable 
+              onPress={() => {
+              setMenuOpen(false);
+              router.push('/search');
+            }}>
+                <Text style={styles.dropdownItem}>Пошук місць</Text>
+              </Pressable>
+    
+              <Pressable
+              onPress={() => {
+              setMenuOpen(false);
+              router.push('/map');
+            }}>
+                <Text style={styles.dropdownItem}>Мапа</Text>
+              </Pressable>
+    
+              <Pressable
+              onPress={() => {
+              setMenuOpen(false);
+              router.push('/aboutUs');
+            }}>
+                <Text style={styles.dropdownItem}>Про нас</Text>
+              </Pressable>
+            </View>
+          )}
+
+
       <Text style={[styles.title, overlay && styles.overlayText]}>
         Вітаємо вас на «МАНДРУЙ»
       </Text>
@@ -73,10 +113,32 @@ const styles = StyleSheet.create({
   justifyContent: "space-between"
 },
 
+reactBoxMenu: {
+
+},
+
   reactMenu: {
     height: 50,
     width: 50,
   },
+
+    dropdown: {
+    position: 'absolute',
+    top: 80,
+    left: 16,
+    backgroundColor: 'rgba(0,0,0,0.85)',
+    borderRadius: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    gap: 12,
+    zIndex: 100,
+},
+
+dropdownItem: {
+  color: '#fff',
+  fontSize: 18,
+  fontFamily: 'Ukrainian-Regular',
+},
 
    reactBoxAcount: {
     // position: 'absolute',
