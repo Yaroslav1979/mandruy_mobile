@@ -1,5 +1,8 @@
 import ParallaxScrollView from '@/components/parallax-scroll-view';
+import { Image } from 'expo-image';
 import {
+  KeyboardAvoidingView,
+  Platform,
   StyleSheet,
   Text,
   TextInput,
@@ -12,82 +15,125 @@ export default function LoginScreen() {
   const { width, height } = useWindowDimensions();
   const isLandscape = width > height;
   return (
+    
     <ParallaxScrollView
-          headerBackgroundColor={{ light: '#fff', dark: '#1D3D47' }}
-          headerHeight={50}
-          headerImage={<View />}
-      >
-         
-      <View style={styles.pageTitle}>
-        <Text style={styles.title}>Login page</Text>
+      headerBackgroundColor={{ light: '#fff', dark: '#1D3D47' }}
+      headerHeight={35}
+      headerImage={<View />}
+      
+    >
+        <View style={styles.pageTitle}>
+          
+          <Image
+            source={require('@/assets/svg/logo.svg')}
+            style={styles.logo}
+         />
+         <Text style={styles.title}>Login page</Text>
+
+      </View>
+      
+      <View style={{ position: "relative" }}>
+        <Image 
+          source={require('../../assets/images/NightMoon.jpg')}
+          style={styles.bgd}
+        />
       </View>
 
-      <View style={[styles.form, isLandscape && styles.formLandscape]}>
+     <KeyboardAvoidingView
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        style={{ flex: 1, position: 'absolute', left: 0, right: 0, alignItems: 'center'}}
+      >
+    
+        <View style={[styles.form, isLandscape && styles.formLandscape]}>
         
-        <View style={[styles.formWrapper, isLandscape && styles.formWrapperLandscape]}>
-         <View style={[styles.formBlock, isLandscape && styles.formBlockLandscape]}>
-          <Text style={styles.label}>Електронна пошта / Email:</Text>
-          <TextInput style={styles.input} textAlign='center' />
-         </View>
+          <View style={[styles.formWrapper, isLandscape && styles.formWrapperLandscape]}>
+            
+            <View style={[styles.formBlock, isLandscape && styles.formBlockLandscape]}>
+              <Text style={styles.label}>Електронна пошта / Email:</Text>
+              <TextInput 
+                style={styles.input} 
+                textAlign='center'
+                autoFocus={false}
+                keyboardType="email-address"
+                autoCapitalize="none"
+                autoCorrect={false}
+                textContentType="emailAddress"
+                />
+            </View>
 
-          <View style={styles.formBlock}>
-            <Text style={styles.label}>Пароль / Password:</Text>
-           <TextInput style={styles.input} textAlign='center' secureTextEntry={true}/>
+            <View style={styles.formBlock}>
+              <Text style={styles.label}>Пароль / Password:</Text>
+              <TextInput 
+                style={styles.input}
+                textAlign='center'
+                secureTextEntry={true}
+                autoFocus={false}
+                textContentType="password"
+            />
           </View>
         </View>
 
-        <TouchableOpacity style={styles.btn} >
-          <Text style={styles.btnTxt}> Вхід </Text> 
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.btn} >
+            <Text style={styles.btnTxt}> Вхід </Text> 
+          </TouchableOpacity>
 
-      </View>
-
+        </View>
+      </KeyboardAvoidingView>
      </ParallaxScrollView>
   );
 }
 
 const styles = StyleSheet.create({
+   bgd: {
+    flex: 1,
+    height: 800,
+  },
+
   pageTitle: {
-    backgroundColor: "#000",
-    padding: 20,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: "#111",
+    padding: 10,
     alignItems: 'center',
   },
   title: {
     fontFamily: 'Ukrainian-Bold',
     color: "#eee"
   },
-
-    form: {
+    logo: {
+    width: 150,
+    height: 35,
+  },
+    form: { 
       fontFamily: 'Ukrainian-Bold',
       display: "flex",
-      gap: 40,
-      marginTop: 100,
-      marginHorizontal: 40,
+      maxWidth: 500, 
+      top: 150, 
     },
 
     formLandscape: {
       fontFamily: 'Ukrainian-Bold',
       display: "flex",
       gap: 20,
-      marginTop: 10,
-      marginHorizontal: 100,
+      width: '100%',
+       maxWidth: 700,
+       top: 80,
     },
     formWrapper: {
       display: "flex",
-      flexDirection: "column",
-      gap: 20,
+      flexDirection: "column"
     },
-    formWrapperLandscape: {
+  formWrapperLandscape: {
       display: "flex",
-      flexDirection: "row",
-      gap: 40,
-    },
+    flexDirection: "row",
+    gap: 20
+  },
 
-    formBlock: {
-      display: "flex",
-      flex: 1,
-      gap: 10,
-    },
+  formBlock: {
+    flex: 1,
+    gap: 10,
+  },
 
     formBlockLandscape: {
       display: "flex",
@@ -98,7 +144,7 @@ const styles = StyleSheet.create({
 
      label: {
       fontFamily: 'Ukrainian-Regular',
-      color: "#111",
+      color: "#eee",
       fontSize: 20,
 
     },
@@ -110,6 +156,7 @@ const styles = StyleSheet.create({
       fontSize: 20,
       fontFamily: 'Ukrainian-Regular',
       color: "#111",
+      backgroundColor: "#eeeeee90"
     },
     btn: {
       backgroundColor: '#9370db99',
