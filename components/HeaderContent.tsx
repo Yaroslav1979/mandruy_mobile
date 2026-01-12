@@ -1,23 +1,16 @@
 import { Image } from 'expo-image';
 import { router } from 'expo-router';
-import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { BurgerMenu } from './burger-menu';
 
 export function HeaderContent({ overlay = false }: { overlay?: boolean }) {
-  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <View style={[styles.container, overlay && styles.overlay]}>
       <View style={styles.box}>
-      
-      <Pressable 
-              style={styles.reactBoxMenu}
-              onPress={() => setMenuOpen(prev => !prev)}
-              >
-              <Image
-                source={require('@/assets/images/burger-menu-67.png')}
-                style={styles.reactMenu} />
-            </Pressable>
+        
+        <BurgerMenu />
+    
       <Image
         source={require('@/assets/svg/logo.svg')}
         style={styles.logo}
@@ -30,34 +23,6 @@ export function HeaderContent({ overlay = false }: { overlay?: boolean }) {
        </Pressable>
       
     </View>
-      {menuOpen && (
-            <View style={styles.dropdown}>
-              <Pressable 
-              onPress={() => {
-              setMenuOpen(false);
-              router.push('/search');
-            }}>
-                <Text style={styles.dropdownItem}>Пошук місць</Text>
-              </Pressable>
-    
-              <Pressable
-              onPress={() => {
-              setMenuOpen(false);
-              router.push('/map');
-            }}>
-                <Text style={styles.dropdownItem}>Мапа</Text>
-              </Pressable>
-    
-              <Pressable
-              onPress={() => {
-              setMenuOpen(false);
-              router.push('/aboutUs');
-            }}>
-                <Text style={styles.dropdownItem}>Про нас</Text>
-              </Pressable>
-            </View>
-          )}
-
 
       <Text style={[styles.title, overlay && styles.overlayText]}>
         Вітаємо вас на «МАНДРУЙ»
@@ -98,13 +63,15 @@ export function HeaderContent({ overlay = false }: { overlay?: boolean }) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+  alignItems: "center",
   },
+
   overlay: {
     position: 'absolute',
     left: 0,
     right: 0,
   },
+
  box: {
   display: "flex",
   flexDirection: "row",
@@ -141,9 +108,7 @@ dropdownItem: {
 },
 
    reactBoxAcount: {
-    // position: 'absolute',
-    // top: 50,
-    // right: 14,
+   
   },
   
   reactAcount: {
@@ -199,7 +164,6 @@ dropdownItem: {
     flexDirection: "row",
     gap: 100,
     marginBottom: 30,
-    // marginTop: 50
   },
   icon: {
     width: 60,

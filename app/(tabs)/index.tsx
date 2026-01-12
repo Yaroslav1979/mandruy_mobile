@@ -1,12 +1,21 @@
 import { HeaderHero } from '@/components/HeaderHero';
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { Image } from 'expo-image';
-import { ImageBackground, Pressable, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import {
+  ImageBackground,
+  Pressable,
+  StyleSheet,
+  Text,
+  useWindowDimensions,
+  View
+} from 'react-native';
 
 export default function HomeScreen() {
   const { width, height } = useWindowDimensions();
   const isLandscape = width > height;
   const currentHeaderHeight = isLandscape ? height : 250;
+  
+
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#d7b8b8ff', dark: '#1D3D47' }}

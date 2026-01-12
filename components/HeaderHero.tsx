@@ -1,6 +1,7 @@
 import { ImageBackground } from 'react-native';
 import { HeaderContent } from './HeaderContent';
 import { HeaderHatContent } from './HeaderHatContent';
+
 export function HeaderHero({
   isLandscape,
   screenHeight,
@@ -20,7 +21,7 @@ export function HeaderHero({
       </ImageBackground>
     );
   }
-
+ 
     return (
     
       <ImageBackground

@@ -3,7 +3,6 @@ import { Image } from 'expo-image';
 import {
   KeyboardAvoidingView,
   Platform,
-  Pressable,
   StyleSheet,
   Text,
   TextInput,
@@ -11,7 +10,6 @@ import {
   View,
   useWindowDimensions
 } from 'react-native';
-import { BurgerMenu } from '../../components/burger-menu';
 
 export default function LoginScreen() {
   const { width, height } = useWindowDimensions();
@@ -25,13 +23,13 @@ export default function LoginScreen() {
       
     >
         <View style={styles.pageTitle}>
-           <BurgerMenu />
-           <Text style={styles.title}>Login page</Text>
+          
           <Image
             source={require('@/assets/svg/logo.svg')}
             style={styles.logo}
          />
-         
+         <Text style={styles.title}>Реєстрація</Text>
+
       </View>
       
       <View style={{ position: "relative" }}>
@@ -61,9 +59,6 @@ export default function LoginScreen() {
                 autoCorrect={false}
                 textContentType="emailAddress"
                 />
-                <Pressable>
-                  <Text style={styles.text} >Не зареєстровані? Реєстрація</Text> 
-                </Pressable>
             </View>
 
             <View style={styles.formBlock}>
@@ -74,10 +69,17 @@ export default function LoginScreen() {
                 secureTextEntry={true}
                 autoFocus={false}
                 textContentType="password"
-              />
-              <Pressable>
-                <Text style={styles.text}>Забули пароль?</Text>
-              </Pressable>
+            />
+          </View>
+          <View style={styles.formBlock}>
+              <Text style={styles.label}>Повторіть пароль /Confirm password:</Text>
+              <TextInput 
+                style={styles.input}
+                textAlign='center'
+                secureTextEntry={true}
+                autoFocus={false}
+                textContentType="password"
+            />
           </View>
         </View>
 
@@ -178,10 +180,5 @@ const styles = StyleSheet.create({
       fontFamily: 'Ukrainian-Regular',
       color: "#eee",
       fontSize: 20
-    },
-    text: {
-      fontFamily: 'Ukrainian-Regular',
-      color: "#eee",
-      fontSize: 12
     }
 })
