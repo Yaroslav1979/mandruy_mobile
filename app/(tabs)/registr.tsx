@@ -1,8 +1,10 @@
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { Image } from 'expo-image';
+import { router } from 'expo-router';
 import {
   KeyboardAvoidingView,
   Platform,
+  Pressable,
   StyleSheet,
   Text,
   TextInput,
@@ -10,8 +12,9 @@ import {
   View,
   useWindowDimensions
 } from 'react-native';
+import { BurgerMenu } from '../../components/burger-menu';
 
-export default function LoginScreen() {
+export default function RegistrScreen() {
   const { width, height } = useWindowDimensions();
   const isLandscape = width > height;
   return (
@@ -20,16 +23,13 @@ export default function LoginScreen() {
       headerBackgroundColor={{ light: '#fff', dark: '#1D3D47' }}
       headerHeight={35}
       headerImage={<View />}
-      
     >
-        <View style={styles.pageTitle}>
-          
-          <Image
+      <View style={styles.pageTitle}>
+        <BurgerMenu />
+        <Image
             source={require('@/assets/svg/logo.svg')}
             style={styles.logo}
          />
-         <Text style={styles.title}>Реєстрація</Text>
-
       </View>
       
       <View style={{ position: "relative" }}>
@@ -41,7 +41,13 @@ export default function LoginScreen() {
 
      <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={{ flex: 1, position: 'absolute', left: 0, right: 0, alignItems: 'center'}}
+        style={{ 
+          flex: 1, 
+          position: 'absolute', 
+          left: 0, 
+          right: 0, 
+          alignItems: 'center'
+        }}
       >
     
         <View style={[styles.form, isLandscape && styles.formLandscape]}>
@@ -81,11 +87,26 @@ export default function LoginScreen() {
                 textContentType="password"
             />
           </View>
+          
         </View>
 
           <TouchableOpacity style={styles.btn} >
-            <Text style={styles.btnTxt}> Вхід </Text> 
+            <Text style={styles.btnTxt}> Зареєструватися </Text> 
           </TouchableOpacity>
+
+          <Pressable
+          onPress={() => router.push('/login')}
+          style={{ 
+          flex: 1, 
+          position: 'absolute', 
+          left: 0, 
+          right: 0, 
+          top: 500,
+          alignItems: 'center'
+        }}
+          >
+            <Text style={styles.text} >Вже зареєстровані? Увійти</Text> 
+          </Pressable>
 
         </View>
       </KeyboardAvoidingView>
@@ -120,6 +141,7 @@ const styles = StyleSheet.create({
       display: "flex",
       maxWidth: 500, 
       top: 150, 
+      marginHorizontal: 40
     },
 
     formLandscape: {
@@ -132,7 +154,8 @@ const styles = StyleSheet.create({
     },
     formWrapper: {
       display: "flex",
-      flexDirection: "column"
+      flexDirection: "column",
+      
     },
   formWrapperLandscape: {
       display: "flex",
@@ -180,5 +203,11 @@ const styles = StyleSheet.create({
       fontFamily: 'Ukrainian-Regular',
       color: "#eee",
       fontSize: 20
+    },
+    text: {
+      fontFamily: 'Ukrainian-Regular',
+      color: "#eee",
+      paddingTop: 5,
+      fontSize: 15
     }
 })

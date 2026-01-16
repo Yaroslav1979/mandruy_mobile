@@ -1,5 +1,6 @@
 import ParallaxScrollView from '@/components/parallax-scroll-view';
 import { Image } from 'expo-image';
+import { router } from 'expo-router';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -26,7 +27,6 @@ export default function LoginScreen() {
     >
         <View style={styles.pageTitle}>
            <BurgerMenu />
-           <Text style={styles.title}>Login page</Text>
           <Image
             source={require('@/assets/svg/logo.svg')}
             style={styles.logo}
@@ -43,7 +43,13 @@ export default function LoginScreen() {
 
      <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={{ flex: 1, position: 'absolute', left: 0, right: 0, alignItems: 'center'}}
+        style={{ 
+                flex: 1, 
+                position: 'absolute', 
+                left: 0, 
+                right: 0, 
+                alignItems: 'center'
+              }}
       >
     
         <View style={[styles.form, isLandscape && styles.formLandscape]}>
@@ -61,7 +67,9 @@ export default function LoginScreen() {
                 autoCorrect={false}
                 textContentType="emailAddress"
                 />
-                <Pressable>
+                <Pressable
+                  onPress={() => router.push('/registr')}
+                >
                   <Text style={styles.text} >Не зареєстровані? Реєстрація</Text> 
                 </Pressable>
             </View>
