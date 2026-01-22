@@ -1,15 +1,15 @@
-import type { PropsWithChildren, ReactElement } from 'react'; // Додано ReactNode
-import { StyleSheet } from 'react-native';
+import type { PropsWithChildren, ReactElement } from "react"; // Додано ReactNode
+import { StyleSheet } from "react-native";
 import Animated, {
   interpolate,
   useAnimatedRef,
   useAnimatedStyle,
   useScrollOffset,
-} from 'react-native-reanimated';
+} from "react-native-reanimated";
 
-import { ThemedView } from '@/components/themed-view';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-import { useThemeColor } from '@/hooks/use-theme-color';
+import { ThemedView } from "@/components/themed-view";
+import { useColorScheme } from "@/hooks/use-color-scheme";
+import { useThemeColor } from "@/hooks/use-theme-color";
 
 // Визначаємо один чіткий інтерфейс для Props
 interface Props extends PropsWithChildren {
@@ -26,8 +26,8 @@ export default function ParallaxScrollView({
   headerBackgroundColor,
   headerHeight = DEFAULT_HEADER_HEIGHT, // Використовуємо значення за замовчуванням
 }: Props) {
-  const backgroundColor = useThemeColor({}, 'background');
-  const colorScheme = useColorScheme() ?? 'light';
+  const backgroundColor = useThemeColor({}, "background");
+  const colorScheme = useColorScheme() ?? "light";
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollOffset(scrollRef);
 
@@ -38,11 +38,15 @@ export default function ParallaxScrollView({
           translateY: interpolate(
             scrollOffset.value,
             [-headerHeight, 0, headerHeight],
-            [-headerHeight / 2, 0, headerHeight * 0.75]
+            [-headerHeight / 2, 0, headerHeight * 0.75],
           ),
         },
         {
-          scale: interpolate(scrollOffset.value, [-headerHeight, 0, headerHeight], [2, 1, 1]),
+          scale: interpolate(
+            scrollOffset.value,
+            [-headerHeight, 0, headerHeight],
+            [2, 1, 1],
+          ),
         },
       ],
     };
@@ -57,16 +61,17 @@ export default function ParallaxScrollView({
         keyboardShouldPersistTaps="handled"
         automaticallyAdjustKeyboardInsets
         contentContainerStyle={{ paddingBottom: 100 }}
-        >
+      >
         <Animated.View
           style={[
             styles.header,
-            { 
-              backgroundColor: headerBackgroundColor[colorScheme], 
-              height: headerHeight // Встановлюємо динамічну висоту тут
+            {
+              backgroundColor: headerBackgroundColor[colorScheme],
+              height: headerHeight, // Встановлюємо динамічну висоту тут
             },
             headerAnimatedStyle,
-          ]}>
+          ]}
+        >
           {headerImage}
         </Animated.View>
         <ThemedView style={styles.content}>{children}</ThemedView>
@@ -78,16 +83,11 @@ export default function ParallaxScrollView({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
   },
   header: {
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   content: {
     flex: 1,
-    // gap: 10,
-    // paddingVertical: 20,
-    // overflow: 'hidden',
-    // paddingHorizontal: 40
   },
 });

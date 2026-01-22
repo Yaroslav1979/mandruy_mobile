@@ -1,33 +1,21 @@
-import { Image } from 'expo-image';
-import { router } from 'expo-router';
-
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-import { BurgerMenu } from './burger-menu';
+import { Image } from "expo-image";
+import { router } from "expo-router";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { BurgerMenu } from "./burger-menu";
 
 export function HeaderHatContent({ overlay = false }: { overlay?: boolean }) {
-
-console.log('BurgerMenu is:', BurgerMenu);
   return (
     <View style={[styles.container, overlay && styles.overlay]}>
-      
-      {/* <View style={styles.box}> */}
+      <BurgerMenu />
 
-        <BurgerMenu />
+      <Image source={require("@/assets/svg/logo.svg")} style={styles.logo} />
 
-      <Image
-        source={require('@/assets/svg/logo.svg')}
-        style={styles.logo}
-      />
-
-      <Pressable 
+      <Pressable
         style={styles.reactBoxAcount}
-        onPress={() => router.push('/login')}
+        onPress={() => router.push("/login")}
       >
         <Text style={styles.reactAcount}>Вхід</Text>
       </Pressable>
-      
-      {/* </View> */}
-
     </View>
   );
 }
@@ -35,30 +23,20 @@ console.log('BurgerMenu is:', BurgerMenu);
 const styles = StyleSheet.create({
   container: {
     display: "flex",
-  flexDirection: "row",
-  gap: 20,
-  alignItems: "center",
-  justifyContent: "space-between",
-  marginTop: 20,
-  marginHorizontal: 20
-    // alignItems: 'center',
+    flexDirection: "row",
+    gap: 20,
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginTop: 20,
+    marginHorizontal: 20,
   },
   overlay: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
   },
-//  box: {
-//   display: "flex",
-//   flexDirection: "row",
-//   gap: 20,
-//   alignItems: "center",
-//   justifyContent: "space-between",
-//   marginTop: 20
-// },
-   reactBoxAcount: {
-   
-  },
+
+  reactBoxAcount: {},
   reactAcount: {
     fontFamily: "Ukrainian-Regular",
     color: "#fff",
@@ -71,11 +49,11 @@ const styles = StyleSheet.create({
     height: 60,
     marginBottom: 20,
   },
-  
+
   title: {
-    fontFamily: 'Ukrainian-Bold',
+    fontFamily: "Ukrainian-Bold",
     fontSize: 30,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: 80,
   },
 });
