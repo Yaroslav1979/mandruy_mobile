@@ -1,48 +1,29 @@
-import { Image } from 'expo-image';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image } from "expo-image";
+import { router } from "expo-router";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { BurgerMenu } from "./burger-menu";
+import { InfoFlags } from "./IhfoFlags";
 
 export function HeaderContent({ overlay = false }: { overlay?: boolean }) {
   return (
     <View style={[styles.container, overlay && styles.overlay]}>
       <View style={styles.box}>
-      <Image
-    source={require('@/assets/images/burger-menu-67.png')}
-    style={styles.reactMenu} />
-      
-      <Image
-        source={require('@/assets/svg/logo.svg')}
-        style={styles.logo}
-      />
-      <Pressable 
-      style={styles.reactBoxAcount}>
-        <Text style={styles.reactAcount}>Вхід</Text>
-       </Pressable>
-      
-    </View>
+        <BurgerMenu />
+
+        <Image source={require("@/assets/svg/logo.svg")} style={styles.logo} />
+        <Pressable
+          style={styles.reactBoxAcount}
+          onPress={() => router.push("/login")}
+        >
+          <Text style={styles.reactAcount}>Вхід</Text>
+        </Pressable>
+      </View>
+
       <Text style={[styles.title, overlay && styles.overlayText]}>
         Вітаємо вас на «МАНДРУЙ»
       </Text>
 
-     <View style={styles.wrapperIcons}> 
-          <Pressable>
-            <Image
-            source={require('../assets/svg/Group14.svg')}
-            style={styles.icon}
-          />
-          </Pressable>
-          <Pressable>
-            <Image
-            source={require('../assets/svg/Group15.svg')}
-            style={styles.icon}
-          />
-           </Pressable>
-          <Pressable>
-            <Image
-            source={require('../assets/svg/Group16.svg')}
-            style={styles.icon}
-          />
-          </Pressable>
-      </View>
+      <InfoFlags />
 
       <View style={styles.buttons}>
         <Pressable style={styles.button}>
@@ -58,32 +39,26 @@ export function HeaderContent({ overlay = false }: { overlay?: boolean }) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    alignItems: "center",
   },
+
   overlay: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
   },
- box: {
-  display: "flex",
-  flexDirection: "row",
-  gap: 200,
-  alignItems: "center",
-  justifyContent: "space-between"
-},
 
-  reactMenu: {
-    height: 50,
-    width: 50,
+  box: {
+    display: "flex",
+    flexDirection: "row",
+    gap: 200,
+    alignItems: "center",
+    justifyContent: "space-between",
   },
 
-   reactBoxAcount: {
-    // position: 'absolute',
-    // top: 50,
-    // right: 14,
-  },
-  
+  reactBoxMenu: {},
+  reactBoxAcount: {},
+
   reactAcount: {
     fontFamily: "Ukrainian-Regular",
     color: "#eee",
@@ -98,13 +73,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   title: {
-    fontFamily: 'Ukrainian-Bold',
+    fontFamily: "Ukrainian-Bold",
     fontSize: 30,
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: 30,
   },
   overlayText: {
-    color: '#eee',
+    color: "#eee",
   },
   buttons: {
     display: "flex",
@@ -112,14 +87,14 @@ const styles = StyleSheet.create({
     gap: 40,
   },
   button: {
-    backgroundColor: '#9370db70',
+    backgroundColor: "#9370db70",
     paddingHorizontal: 30,
     paddingVertical: 14,
     borderRadius: 30,
   },
   buttonText: {
-    fontFamily: 'Ukrainian-Bold',
-    color: '#eee',
+    fontFamily: "Ukrainian-Bold",
+    color: "#eee",
     fontSize: 20,
   },
   link: {
@@ -128,19 +103,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   linkText: {
-    fontFamily: 'Ukrainian-Bold',
-    color: '#eee',
+    fontFamily: "Ukrainian-Bold",
+    color: "#eee",
     fontSize: 20,
   },
- wrapperIcons: {
-    display: "flex",
-    flexDirection: "row",
-    gap: 100,
-    marginBottom: 30,
-    // marginTop: 50
-  },
-  icon: {
-    width: 60,
-    height: 60,
-  }
 });
