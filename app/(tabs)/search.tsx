@@ -1,14 +1,62 @@
 import ParallaxScrollView from "@/components/parallax-scroll-view";
-import { Picker } from "@react-native-picker/picker";
 import { Image } from "expo-image";
 import { useState } from "react";
 import { StyleSheet, Text, TextInput, View } from "react-native";
+import DropDownPicker from "react-native-dropdown-picker";
 import { BurgerMenu } from "../../components/burger-menu";
 
 export default function LoginScreen() {
+  const [categoryOpen, setCategoryOpen] = useState(false);
   const [category, setCategory] = useState("Без категорії");
+  const [categoryItems, setCategoryItems] = useState([
+    { label: "Без категорії", value: "Без категорії" },
+    { label: "Табір", value: "Табір" },
+    { label: "Мандрівка", value: "Мандрівка" },
+    { label: "Питна вода", value: "Питна вода" },
+    { label: "Пам'ятка", value: "Пам'ятка" },
+    { label: "Музей", value: "Музей" },
+    { label: "Водойма", value: "Водойма" },
+    { label: "Автомобіль", value: "Автомобіль" },
+  ]);
+
+  const [regionOpen, setRegionOpen] = useState(false);
   const [region, setRegion] = useState("Вся Україна");
-  const [sortedby, setSortedby] = useState("Вся Україна");
+  const [regionItems, setRegionItems] = useState([
+    { label: "Вся Україна", value: "Вся Україна" },
+    { label: "Волинська область", value: "Волинська область" },
+    { label: "Вінницька область", value: "Вінницька область" },
+    { label: "Дніпропетровська область", value: "Дніпропетровська область" },
+    { label: "Донецька область", value: "Донецька область" },
+    { label: "Житомирська область", value: "Житомирська область" },
+    { label: "Закарпатська область", value: "Закарпатська область" },
+    { label: "Запорізька область", value: "Запорізька область" },
+    { label: "Івано-Франківська область", value: "Івано-Франківська область" },
+    { label: "Київська область", value: "Київська область" },
+    { label: "Кіровоградська область", value: "Кіровоградська область" },
+    { label: "Луганська область", value: "Луганська область" },
+    { label: "Львівська область", value: "Львівська область" },
+    { label: "Миколаївська область", value: "Миколаївська область" },
+    { label: "Одеська область", value: "Одеська область" },
+    { label: "Полтавська область", value: "Полтавська область" },
+    { label: "Рівненська область", value: "Рівненська область" },
+    { label: "Сумська область", value: "Сумська область" },
+    { label: "Тернопільська область", value: "Тернопільська область" },
+    { label: "Харківська область", value: "Харківська область" },
+    { label: "Херсонська область", value: "Херсонська область" },
+    { label: "Хмельницька область", value: "Хмельницька область" },
+    { label: "Черкаська область", value: "Черкаська область" },
+    { label: "Чернівецька область", value: "Чернівецька область" },
+    { label: "Чернігівська область", value: "Чернігівська область" },
+    { label: "Крим автономна республіка", value: "Крим автономна республіка" },
+  ]);
+
+  const [sortedbyOpen, setSortedbyOpen] = useState(false);
+  const [sortedby, setSortedby] = useState("За замовчуванням");
+  const [sortedbyItems, setSortedbyItems] = useState([
+    { label: "За замовчуванням", value: "За замовчуванням" },
+    { label: "За назвою", value: "За назвою" },
+    { label: "За датою", value: "За датою" },
+  ]);
 
   return (
     <ParallaxScrollView
@@ -22,6 +70,7 @@ export default function LoginScreen() {
           source={require("../../assets/svg/logo.svg")}
           style={styles.logo}
         />
+        <Text style={styles.reactAcount}>Вхід</Text>
       </View>
       <View style={styles.titleWrapper}>
         <Text style={styles.title}>ПОШУК МІСЦЬ</Text>
@@ -38,130 +87,58 @@ export default function LoginScreen() {
             source={require("../../assets/images/iconSearch.png")}
             style={styles.searchBtn}
           />
-          {/* <TouchableOpacity style={styles.btn}> */}
-          {/* <View> */}
-
-          {/* </View> */}
-
-          {/* <Text style={styles.btnTxt}> Шукати </Text> */}
-          {/* </TouchableOpacity> */}
-        </View>
-        <Text style={[styles.label, styles.bold]}>Розширений пошук:</Text>
-        <View>
-          <Text style={styles.label}>Категорія:</Text>
-          <Picker
-            selectedValue={category}
-            onValueChange={(itemValue) => setCategory(itemValue)}
-            style={styles.picker}
-          >
-            <Picker.Item label="Без категорії" value="Без категорії" />
-            <Picker.Item label="Табір" value="Табір" />
-            <Picker.Item label="Мандрівка" value="Мандрівка" />
-            <Picker.Item label="Питна вода" value="Питна вода" />
-            <Picker.Item label="Пам'ятка" value="Пам'ятка" />
-            <Picker.Item label="Музей" value="Музей" />
-            <Picker.Item label="Водойма" value="Водойма" />
-            <Picker.Item label="Автомобіль" value="Автомобіль" />
-          </Picker>
         </View>
 
-        <View>
-          <Text style={styles.label}>Область:</Text>
-          <Picker
-            selectedValue={region}
-            onValueChange={(itemValue) => setRegion(itemValue)}
-          >
-            <Picker.Item label="Вся Україна" value="Вся Україна" />
-            <Picker.Item label="Вінницька область" value="Вінницька область" />
-            <Picker.Item label="Волинська область" value="Волинська область" />
-            <Picker.Item
-              label="Дніпропетровська область"
-              value="Дніпропетровська область"
-            />
-            <Picker.Item label="Донецька область" value="Донецька область" />
-            <Picker.Item
-              label="Житомирська область"
-              value="Житомирська область"
-            />
-            <Picker.Item
-              label="Закарпатська область"
-              value="Закарпатська область"
-            />
-            <Picker.Item
-              label="Запорізька область"
-              value="Запорізька область"
-            />
-            <Picker.Item
-              label="Івано-Франківська область"
-              value="Івано-Франківська область"
-            />
-            <Picker.Item label="Київська область" value="Київська область" />
-            <Picker.Item
-              label="Кіровоградська область"
-              value="Кіровоградська область"
-            />
-            <Picker.Item label="Луганська область" value="Луганська область" />
-            <Picker.Item label="Львівська область" value="Львівська область" />
-            <Picker.Item
-              label="Миколаївська область"
-              value="Миколаївська область"
-            />
-            <Picker.Item label="Одеська область" value="Одеська область" />
-            <Picker.Item
-              label="Полтавська область"
-              value="Полтавська область"
-            />
-            <Picker.Item
-              label="Рівненська область"
-              value="Рівненська область"
-            />
-            <Picker.Item label="Сумська область" value="Сумська область" />
-            <Picker.Item
-              label="Тернопільська область"
-              value="Тернопільська область"
-            />
-            <Picker.Item
-              label="Івано-Франківська область"
-              value="Івано-Франківська область"
-            />
-            <Picker.Item
-              label="Харківська область"
-              value="Харківська область"
-            />
-            <Picker.Item
-              label="Херсонська область"
-              value="Херсонська область"
-            />
-            <Picker.Item
-              label="Хмельницька область"
-              value="Хмельницька область"
-            />
-            <Picker.Item label="Черкаська область" value="Черкаська область" />
-            <Picker.Item
-              label="Чернівецька область"
-              value="Чернівецька область"
-            />
-            <Picker.Item
-              label="Чернігівська область"
-              value="Чернігівська область"
-            />
-            <Picker.Item
-              label="Крим автономна республіка"
-              value="Крим автономна республіка"
-            />
-          </Picker>
-        </View>
+        {/* <Text style={styles.subtitle}>Розширений пошук:</Text> */}
 
-        <View>
-          <Text style={styles.label}>Сортувати за:</Text>
-          <Picker
-            selectedValue={sortedby}
-            onValueChange={(itemValue) => setSortedby(itemValue)}
-          >
-            <Picker.Item label="за замовчуванням" value="за замовчуванням" />
-            <Picker.Item label="за назвою" value="за назвою" />
-            <Picker.Item label="за датою" value="за датою" />
-          </Picker>
+        <View style={styles.pickerWrapper}>
+          <View style={{ width: "33%", zIndex: 3000, gap: 5 }}>
+            <Text style={styles.label}>Категорія:</Text>
+            <DropDownPicker
+              open={categoryOpen}
+              value={category}
+              items={categoryItems}
+              setOpen={setCategoryOpen}
+              setValue={setCategory}
+              setItems={setCategoryItems}
+              placeholder="Оберіть категорію"
+              style={styles.dropdown}
+              textStyle={styles.dropdownText}
+              dropDownContainerStyle={styles.dropdownContainer}
+            />
+          </View>
+
+          <View style={{ width: "33%", zIndex: 2000, gap: 5 }}>
+            <Text style={styles.label}>Область:</Text>
+            <DropDownPicker
+              open={regionOpen}
+              value={region}
+              items={regionItems}
+              setOpen={setRegionOpen}
+              setValue={setRegion}
+              setItems={setRegionItems}
+              placeholder="Оберіть область"
+              style={styles.dropdown}
+              textStyle={styles.dropdownText}
+              dropDownContainerStyle={styles.dropdownContainer}
+            />
+          </View>
+
+          <View style={{ width: "33%", zIndex: 1000, gap: 5 }}>
+            <Text style={styles.label}>Сортувати за:</Text>
+            <DropDownPicker
+              open={sortedbyOpen}
+              value={sortedby}
+              items={sortedbyItems}
+              setOpen={setSortedbyOpen}
+              setValue={setSortedby}
+              setItems={setSortedbyItems}
+              placeholder="Сортувати за"
+              style={styles.dropdown}
+              textStyle={styles.dropdownText}
+              dropDownContainerStyle={styles.dropdownContainer}
+            />
+          </View>
         </View>
       </View>
     </ParallaxScrollView>
@@ -195,43 +172,74 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
   },
   formBlock: {
-    // display: "contents",
     flex: 1,
     flexDirection: "row",
-    gap: 20,
+    gap: 10,
     justifyContent: "center",
     alignItems: "center",
-    marginBottom: 40,
+
+    marginBottom: 20,
   },
   label: {
     fontFamily: "Ukrainian-Regular",
     color: "#111",
-    fontSize: 20,
+    fontSize: 15,
   },
-  bold: {
+  subtitle: {
     fontFamily: "Ukrainian-Bold",
+    color: "#111",
+    fontSize: 20,
   },
   input: {
     borderWidth: 2,
-    borderColor: "#111",
+    borderColor: "#333",
     height: 50,
-    borderRadius: 25,
+    borderRadius: 10,
     fontSize: 20,
     fontFamily: "Ukrainian-Regular",
-    color: "#222",
-    width: 270,
+    color: "#555",
+    minWidth: 300,
   },
-  picker: {},
-  // btnTxt: {
-  //   fontFamily: "Ukrainian-Regular",
-  //   color: "#eee",
-  //   fontSize: 20,
-  // },
+  pickerWrapper: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    gap: 5,
+  },
+
   logo: {
     width: 150,
+    height: 35,
   },
   searchBtn: {
     width: 50,
     height: 50,
+    borderWidth: 2,
+    borderColor: "#333",
+    borderRadius: 10,
+  },
+  dropdown: {
+    borderColor: "#333",
+    borderWidth: 2,
+    borderRadius: 10,
+    minHeight: 45,
+  },
+
+  dropdownContainer: {
+    borderColor: "#333",
+    // marginHorizontal: 20,
+  },
+
+  dropdownText: {
+    fontFamily: "Ukrainian-Regular",
+    fontSize: 10,
+    color: "#111",
+  },
+
+  reactAcount: {
+    fontFamily: "Ukrainian-Regular",
+    color: "#eee",
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
